@@ -58,7 +58,7 @@
 
         .wrapper > .page {
             width: 100%;
-            padding: 15px;
+            padding: 60px 50px 50px 50px;
             display: none;
             position: relative;
             text-align: center;
@@ -66,6 +66,9 @@
             border-radius: 5px;
             z-index: -1;
             overflow: hidden;
+        }
+        .wrapper > .page#mainpage {
+            padding: 0;
         }
         .wrapper > .page.open {
             display: initial;
@@ -170,7 +173,13 @@
         }
         @media only screen and (max-width: 600px) {
             .wrapper {
-                width: 95%;
+                width: 100%;
+            }
+            body {
+                font-size: 12px;
+            }
+            .wrapper > .page {
+                padding: 40px 15px 15px 15px;
             }
         }
         @media only screen and (min-width: 600px) {
@@ -199,7 +208,7 @@
         </ul>
 
     </div>
-    <div class="page" style="width: 80%;padding:60px 50px 50px 50px;" id="commands">
+    <div class="page" style="width: 80%;" id="commands">
         <!--            <div class="pagebg" style="background-image: url('https://cdn.communitydragon.org/latest/champion/teemo/splash-art/centered')"></div>-->
         <div class="close" onclick="$('.page').removeClass('open'); $('#mainpage').addClass('open')"><span class="material-icons">clear</span></div>
         <div class="title">Komutlar</div>
