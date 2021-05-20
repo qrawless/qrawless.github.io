@@ -64,6 +64,8 @@
             text-align: center;
             margin: 0 auto;
             border-radius: 5px;
+            z-index: -1;
+            overflow: hidden;
         }
         .wrapper > .page.open {
             display: initial;
@@ -114,15 +116,69 @@
             display: inline-block;
             padding: 10px 75px;
         }
+        /*.wrapper > .page > .pagebg {*/
+        /*    width: 100%;*/
+        /*    height: 300px;*/
+        /*    background-position: center;*/
+        /*    background-repeat: no-repeat;*/
+        /*    background-size: 150%;*/
+        /*    filter: blur(5px);*/
+        /*    position: absolute;*/
+        /*    top: 0;*/
+        /*    left: 0;*/
+        /*    z-index: -1;*/
+        /*    animation: pagebg 1.25s 1;*/
+        /*}*/
+        /*.wrapper > .page > .pagebg:before {*/
+        /*    content: "";*/
+        /*    width: 100%;*/
+        /*    height: 300px;*/
+        /*    position: absolute;*/
+        /*    top: 0;*/
+        /*    left: 0;*/
+        /*    z-index: -1;*/
+        /*    background-image: linear-gradient(to bottom, rgba(27, 31, 34, 0.9), rgb(27, 31, 31));*/
+        /*}*/
+        /*.wrapper > .page > .pagebg:after {*/
+        /*    content: "";*/
+        /*    width: 100%;*/
+        /*    height: 350px;*/
+        /*    position: absolute;*/
+        /*    top: 0;*/
+        /*    left: 0;*/
+        /*    z-index: -1;*/
+        /*    background-image: linear-gradient(to bottom, transparent, rgb(27, 31, 31));*/
+        /*}*/
         @keyframes pageopen {
             from {top: 25px; opacity: 0;}
             to {top: 0px; opacity: 1;}
+        }
+        @keyframes pagebg {
+            0% {opacity: 0;}
+            75% {opacity: 0;}
+            100% {opacity: 1;}
         }
         .close {
             position: absolute;
             cursor: pointer;
             top: 15px;
             right: 15px;
+            z-index: 99;
+        }
+        @media only screen and (max-width: 600px) {
+            .wrapper {
+                width: 95%;
+            }
+        }
+        @media only screen and (min-width: 600px) {
+            .wrapper {
+                width: 85%;
+            }
+        }
+        @media only screen and (min-width: 1500px) {
+            .wrapper {
+                width: 50%;
+            }
         }
 
     </style>
@@ -141,13 +197,44 @@
 
     </div>
     <div class="page" style="width: 80%;padding:60px 50px 50px 50px;" id="commands">
+        <!--            <div class="pagebg" style="background-image: url('https://cdn.communitydragon.org/latest/champion/teemo/splash-art/centered')"></div>-->
         <div class="close" onclick="$('.page').removeClass('open'); $('#mainpage').addClass('open')"><span class="material-icons">clear</span></div>
         <div class="title">Komutlar</div>
 
-<!--        <img style="margin: 15px 0;" src="https://hypixelbot.github.io/website/images/HypixelBanner.png" alt="">-->
 
-        <div class="subtitle" style="margin-bottom: 15px">Kullanıcı Komutları</div>
-        <div class="subtitle" style="margin-bottom: 15px">Şampiyon Komutları</div>
+        <table style="width:100%; margin-top: 25px; text-align: left">
+            <tr>
+                <th>Komut</th>
+                <th>Açıklama</th>
+                <th>Örnek</th>
+            </tr>
+            <tr>
+                <td>.register [Sihirdar isminiz] [bölge]</td>
+                <td>Kayıt olun.</td>
+                <td>.register test tr</td>
+            </tr>
+            <tr>
+                <td>.me</td>
+                <td>Profilinize bakın.</td>
+                <td>.me</td>
+            </tr>
+            <tr>
+                <td>.profile @etiket</td>
+                <td>Başkasının Profiline bakın.</td>
+                <td>.profile @etiket</td>
+            </tr>
+            <tr><td><br></td></tr>
+            <tr>
+                <td>.build [Şampiyon ismi]</td>
+                <td>Önerilen şampiyon eşyaları.</td>
+                <td>.build Teemo</td>
+            </tr>
+        </table>
+
+
+        <!--            <img style="margin: 15px 0;" src="https://cdn.communitydragon.org/latest/champion/teemo/splash-art/centered" alt="">-->
+
+        <!--            <div class="subtitle" style="margin: 15px 0">Şampiyon Komutları</div>-->
     </div>
 </div>
 
