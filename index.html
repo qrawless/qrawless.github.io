@@ -5,27 +5,198 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="refresh" content="5">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <!--    <meta http-equiv="refresh" content="1">-->
     <title>Document</title>
 
-<style>
-.centered {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%);
-}
-</style>
-<style>
-    body {
-        background-color: #132028 !important;
-    }
-</style>
+    <style>
+        .centered {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            /* bring your own prefixes */
+            transform: translate(-50%, -50%);
+        }
+        .line {
+            width: 100%;
+            height: 1px;
+            background-color: white;
+            display: block;
+        }
+        .linet {
+            width: 1px;
+            height: 35px;
+            background-color: white;
+            display: block;
+            margin: 0 auto;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:100,200,300,400,500,600,700,800,900italic,600italic,300,600");
+        body {
+            background-color: #132028 !important;
+            color: white;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Source Sans Pro", sans-serif;
+            font-weight: 300;
+            font-size: 1rem;
+            line-height: 1.65;
+            user-select: none;
+        }
+
+        .wrapper {
+            width: 50%;
+            display: inline-flex;
+            z-index: 3;
+        }
+
+        .wrapper > .page {
+            width: 100%;
+            padding: 15px;
+            display: none;
+            position: relative;
+            text-align: center;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+        .wrapper > .page.open {
+            display: initial;
+            animation: pageopen 1s 1;
+        }
+        .wrapper > .page#commands {
+            background-color: rgba(27, 31, 34, 0.85);
+        }
+        .wrapper > .page#mainpage > .title {
+            font-size: 40px;
+            letter-spacing: 7px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .wrapper > .page > .title {
+            font-size: 27px;
+            letter-spacing: 4px;
+            font-weight: 600;
+            text-align: left;
+            text-transform: uppercase;
+        }
+        .wrapper > .page > .subtitle {
+            font-size: 16px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        .wrapper > .page > .desc {
+            font-size: 17px;
+            letter-spacing: 3px;
+            font-weight: 400;
+            text-align: center;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+        .wrapper > .page > ul {
+            width: fit-content;
+            list-style-type: none;
+            margin: 0 auto;
+            padding: 0;
+            /*margin-top: 50px;*/
+            border: 1px solid white;
+        }
+        .wrapper > .page > ul > li {
+            cursor: pointer;
+            display: inline-block;
+            padding: 10px 75px;
+        }
+        @keyframes pageopen {
+            from {top: 25px; opacity: 0;}
+            to {top: 0px; opacity: 1;}
+        }
+        .close {
+            position: absolute;
+            cursor: pointer;
+            top: 15px;
+            right: 15px;
+        }
+
+    </style>
 </head>
 <body>
 <div class="wrapper centered">
-    asdasd
+    <div class="page open" id="mainpage">
+        <div class="line" style="margin-bottom: 50px"></div>
+        <div class="title">TEEMO BOT</div>
+        <div class="desc">League of Legends, profilinizi analiz eder</div>
+        <div class="line" style="margin-top: 50px"></div>
+        <div class="linet"></div>
+        <ul>
+            <li onclick="$('.page').removeClass('open'); $('#commands').addClass('open')">Komutlar</li>
+        </ul>
+
+    </div>
+    <div class="page" style="width: 80%;padding:60px 50px 50px 50px;" id="commands">
+        <div class="close" onclick="$('.page').removeClass('open'); $('#mainpage').addClass('open')"><span class="material-icons">clear</span></div>
+        <div class="title">Komutlar</div>
+
+        <img style="margin: 15px 0;" src="https://hypixelbot.github.io/website/images/HypixelBanner.png" alt="">
+
+        <div class="subtitle" style="margin-bottom: 15px">Kullanıcı Komutları</div>
+        <div class="subtitle" style="margin-bottom: 15px">Şampiyon Komutları</div>
+    </div>
 </div>
+
+<style>
+    #bg {
+        -moz-transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+        -ms-transform: scale(1.0);
+        transform: scale(1.0);
+        -webkit-backface-visibility: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1;
+    }
+    #bg:before {
+        background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("https://qrawless.github.io/assest/overlay.png");
+        background-size: auto, 256px 256px;
+        background-position: center, center;
+        background-repeat: no-repeat, repeat;
+        z-index: 2;
+    }
+    #bg:before, #bg:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    #bg:after {
+        -moz-transform: scale(1.125);
+        -webkit-transform: scale(1.125);
+        -ms-transform: scale(1.125);
+        transform: scale(1.125);
+        background-image: url("https://cdn.communitydragon.org/latest/champion/teemo/splash-art/centered");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        filter: blur(85px);
+        z-index: 1;
+    }
+</style>
+
+<div id="bg"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>
