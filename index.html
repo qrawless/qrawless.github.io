@@ -99,13 +99,13 @@
         }
 
         .wrapper > .page > .desc {
-            font-size: 17px;
-            letter-spacing: 3px;
-            font-weight: 400;
+            font-size: 16px;
+            letter-spacing: 2px;
+            font-weight: 600;
             text-align: center;
-            margin-top: 15px;
             text-transform: uppercase;
         }
+
         .wrapper > .page > ul {
             width: fit-content;
             list-style-type: none;
@@ -119,39 +119,7 @@
             display: inline-block;
             padding: 10px 75px;
         }
-        /*.wrapper > .page > .pagebg {*/
-        /*    width: 100%;*/
-        /*    height: 300px;*/
-        /*    background-position: center;*/
-        /*    background-repeat: no-repeat;*/
-        /*    background-size: 150%;*/
-        /*    filter: blur(5px);*/
-        /*    position: absolute;*/
-        /*    top: 0;*/
-        /*    left: 0;*/
-        /*    z-index: -1;*/
-        /*    animation: pagebg 1.25s 1;*/
-        /*}*/
-        /*.wrapper > .page > .pagebg:before {*/
-        /*    content: "";*/
-        /*    width: 100%;*/
-        /*    height: 300px;*/
-        /*    position: absolute;*/
-        /*    top: 0;*/
-        /*    left: 0;*/
-        /*    z-index: -1;*/
-        /*    background-image: linear-gradient(to bottom, rgba(27, 31, 34, 0.9), rgb(27, 31, 31));*/
-        /*}*/
-        /*.wrapper > .page > .pagebg:after {*/
-        /*    content: "";*/
-        /*    width: 100%;*/
-        /*    height: 350px;*/
-        /*    position: absolute;*/
-        /*    top: 0;*/
-        /*    left: 0;*/
-        /*    z-index: -1;*/
-        /*    background-image: linear-gradient(to bottom, transparent, rgb(27, 31, 31));*/
-        /*}*/
+
         @keyframes pageopen {
             from {top: 25px; opacity: 0;}
             to {top: 0px; opacity: 1;}
@@ -193,6 +161,38 @@
             }
         }
 
+
+
+
+
+
+
+
+
+
+        .flip {
+            animation: roll 1s ease 1;
+        }
+
+        .anim {
+            font-size: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin:  10px 0 20px 0;
+        }
+
+
+        @keyframes roll {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -200,7 +200,10 @@
     <div class="page open" id="mainpage">
         <div class="line" style="margin-bottom: 50px"></div>
         <div class="title">TEEMO BOT</div>
-        <div class="desc">League of Legends, profilinizi analiz eder</div>
+
+        <p class="anim">...</p>
+
+        <div class="desc">League of Legends profilinizi analiz eder.</div>
         <div class="line" style="margin-top: 50px"></div>
         <div class="linet"></div>
         <ul>
@@ -297,5 +300,73 @@
 <div id="bg"></div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    (function() {
+
+        var word = ['','Ligler', 'İstatistikler', 'Kazanma oranları', 'Şampiyon Ustalıkları', 'Ana koridorlar', 'Maç analiz etiketleri', 'Şampiyon rehberi'];
+        var element = document.getElementsByTagName('p')[0];
+        var wordIndex = 1;
+
+        var resetAnimation = function() {
+            element.classList.remove('flip');
+        }
+
+        setInterval(function(){
+            switch (wordIndex) {
+                case 0:
+                    element.classList.add('flip');
+                    element.textContent = word[wordIndex];
+                    wordIndex = 1;
+                    setTimeout(resetAnimation, 1000);
+                    break;
+
+                case 1:
+                    element.classList.add('flip');
+                    element.textContent = word[wordIndex];
+                    wordIndex = 2;
+                    setTimeout(resetAnimation, 1000);
+                    break;
+
+                case 2:
+                    element.classList.add('flip');
+                    element.textContent = word[wordIndex];
+                    wordIndex = 3;
+                    setTimeout(resetAnimation, 1000);
+                    break;
+
+                case 3:
+                    element.classList.add('flip');
+                    element.textContent = word[wordIndex];
+                    wordIndex = 4;
+                    setTimeout(resetAnimation, 1000);
+                    break;
+                case 4:
+                    element.classList.add('flip');
+                    element.textContent = word[wordIndex];
+                    wordIndex = 5;
+                    setTimeout(resetAnimation, 1000);
+                    break;
+                case 5:
+                    element.classList.add('flip');
+                    element.textContent = word[wordIndex];
+                    wordIndex = 6;
+                    setTimeout(resetAnimation, 1000);
+                    break;
+                case 6:
+                    element.classList.add('flip');
+                    element.textContent = word[wordIndex];
+                    wordIndex = 7;
+                    setTimeout(resetAnimation, 1000);
+                    break;
+                case 7:
+                    element.classList.add('flip');
+                    element.textContent = word[wordIndex];
+                    wordIndex = 1;
+                    setTimeout(resetAnimation, 1000);
+                    break;
+            }
+        },2000)
+    }());
+</script>
 </body>
 </html>
